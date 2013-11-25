@@ -27,6 +27,7 @@ app.get('/weixin/echo-token.io', function (req, res) {
 
 app.post('/weixin/echo-token.io', xmlparser({trim: false, explicitArray: false}), function (req, res, next) {
     // check req.body
+    console.log('req', req)
     console.log('query', req.query)
     console.log('body', req.body)
     res.jsonp(JSON.stringify(req.body))
