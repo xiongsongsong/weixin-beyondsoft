@@ -5,7 +5,7 @@
 var app = require('app')
 var crypto = require('crypto')
 
-app.get('/weixin/echo-token', function (req, res) {
+app.get('/weixin/echo-token.io', function (req, res) {
 
     console.log('微信 query:', req.query)
     console.log('微信 body:', req.body)
@@ -22,12 +22,11 @@ app.get('/weixin/echo-token', function (req, res) {
     } else {
         res.end(req.query.signature);
     }
-
 })
 
 
-app.post('/weixin/echo-token', function (req, res) {
+app.post('/weixin/echo-token.io', function (req, res) {
     console.log('query', req.query)
     console.log('body', req.body)
-    res.json(req.body)
+    res.end(Math.random().toString())
 })
