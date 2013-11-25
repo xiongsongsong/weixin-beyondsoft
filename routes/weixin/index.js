@@ -24,3 +24,10 @@ app.get('/weixin/echo-token', function (req, res) {
     }
 
 })
+
+
+app.post('/weixin/echo-token', function (req, res) {
+    console.log('query', req.query)
+    console.log('body', req.body)
+    res.json(req.body)
+})
