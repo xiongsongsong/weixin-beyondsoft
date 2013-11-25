@@ -4,6 +4,7 @@
 
 var app = require('app')
 var crypto = require('crypto')
+var XmlStream = require('xml-stream');
 
 app.get('/weixin/echo-token.io', function (req, res) {
 
@@ -28,5 +29,16 @@ app.get('/weixin/echo-token.io', function (req, res) {
 app.post('/weixin/echo-token.io', function (req, res) {
     console.log('query', req.query)
     console.log('body', req.body)
-    res.end(Math.random().toString())
+    req.setEncoding('utf8');
+    var xml = new XmlStream(req);
+
+    xml.on('updateElement: sometag', function (element) {
+        // DO some processing on the tag
+    });
+
+    xml.on('end', function () {
+        console.log('Parse End')
+        console.log(xml.data)
+    });
+
 })
